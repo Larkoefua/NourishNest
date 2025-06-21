@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>About Brand</title>
+    <!-- Favicon -->
+    <link rel="icon" type="" href="img/favicon_rijona.png">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!--Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar start -->
+    <div class="container-fluid fixed-top">
+        <div class="container topbar bg-primary d-none d-lg-block">
+            <div class="d-flex justify-content-between">
+                <div class="top-info ps-2">
+                    <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#"
+                            class="text-white">Tamale, Vittin-Target, Northern Region</a></small>
+                    <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#"
+                            class="text-white">info@rijonabbc.com</a></small>
+                </div>
+                <div class="top-link pe-2">
+                    <a href="tel:+233 249 897 621" class="text-white"><small class="text-white mx-2">+233 249 897
+                            621</small></a>
+                </div>
+            </div>
+        </div>
+        <div class="container px-0">
+            <nav class="navbar navbar-light bg-white navbar-expand-xl">
+                <a href="index.html" class="navbar-brand">
+                    <img src="img/Rijona-logo.png" alt="Logo" class="img-fluid" style="max-height: 100px;">
+                </a>
+
+                <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars text-primary"></span>
+                </button>
+                <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+                    <div class="navbar-nav mx-auto">
+                        <a href="index.html" class="nav-item nav-link ">Home</a>
+                        <a href="shop.html" class="nav-item nav-link">Shop</a>
+                        <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu m-0 bg-secondary rounded-0">
+                                <a href="cart.html" class="dropdown-item">Cart</a>
+                                <a href="checkout.html" class="dropdown-item">Checkout</a>
+                              
+                            </div>
+                        </div>
+                        <a href="about.html" class="nav-item nav-link active">About</a>
+                       
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    </div>
+                    <div class="d-flex m-3 me-0">
+                        <button
+                            class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+                            data-bs-toggle="modal" data-bs-target="#searchModal"><i
+                                class="fas fa-search text-primary"></i></button>
+                        <a href="#" class="position-relative me-4 my-auto">
+                            <i class="fa fa-shopping-bag fa-2x"></i>
+                            <span
+                                class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+                                style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+                        </a>
+                        <a href="#" class="my-auto">
+                            <i class="fas fa-user fa-2x"></i>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Modal Search Start -->
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content rounded-0">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex align-items-center">
+                    <div class="input-group w-75 mx-auto d-flex">
+                        <input type="search" class="form-control p-3" placeholder="keywords"
+                            aria-describedby="search-icon-1">
+                        <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Search End -->
+
+
+    <!-- Single Page Header start -->
+    <div class="container-fluid page-header py-5" style="margin-bottom:-5rem;">
+        <h1 class="text-center text-white display-10">About Us</h1>
+        <ol class="breadcrumb justify-content-center mb-0">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="shop.html">Shop</a></li>
+            <li class="breadcrumb-item active text-white">Brand</li>
+        </ol>
+    </div>
+    <!-- Single Page Header End -->
+
+    <!--Brand Start -->
+    <div class="container-fluid py-5 mb-5 hero-header ">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-md-12 col-lg-7">
+                    <h4 class="mb-3 text-secondary">About Nourishnest</h4>
+                    <h5 class="mb-3 display-10 text-primary">NourishNest is our flagship product, meticulously crafted
+                        to
+                        redefine your skincare routine. Immerse yourself in the rich blend of neem-based formulations,
+                        carefully curated to nourish your skin while offering a shield against mosquito-borne diseases.
+                        Our dual-purpose solution combines wellness and protection, harnessing the power of neem to
+                        create a natural haven for your skin. From the bustling urban life to serene countryside,
+                        NourishNest is designed to be your companion, offering a touch of nature's goodness. Elevate
+                        your self-care with our neem-infused skincare, where every drop tells a story of sustainability,
+                        well-being, and a commitment to a healthier tomorrow.</h5>
+                </div>
+                <div class="col-md-12 col-lg-5">
+                    <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active rounded">
+                                <img src="img/blog-cat4.jpg" class="img-fluid w-100 h-100 bg-secondary rounded"
+                                    alt="First slide">
+
+                            </div>
+                            <div class="carousel-item rounded">
+                                <img src="img/Overlay.jpg" class="img-fluid w-100 h-100 rounded" alt="Second slide">
+
+                            </div>
+                            <div class="carousel-item rounded">
+                                <img src="img/product3.jpg" class="img-fluid w-100 h-100 rounded" alt="Third slide">
+
+                            </div>
+                            <div class="carousel-item rounded">
+                                <img src="img/product2.jpg" class="img-fluid w-100 h-100 rounded" alt="Forth slide">
+
+                            </div>
+                            <div class="carousel-item rounded">
+                                <img src="img/General_Product.jpg" class="img-fluid w-100 h-100 rounded"
+                                    alt="Fifth slide">
+
+                            </div>
+                            <div class="carousel-item rounded">
+                                <img src="img/product6.jpg" class="img-fluid w-100 h-100 rounded" alt="Sixth slide">
+
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselId"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselId"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Brand End -->
+
+    <!-- Team Start -->
+    <div class="container-fluid testimonial  py-5 hero" style="margin-top:-7rem;" >
+        <div class="container py-5" >
+            <div class="testimonial-header text-center" >
+                <h1 class="text-primary">Our Team</h1>
+               
+            </div>
+            <div class="owl-carousel testimonial-carousel">
+                <div class="testimonial-item img-border-radius bg-light rounded p-4">
+                    <div class="position-relative">
+                        <i class=" text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
+                        <div class="mb-4 pb-4 border-bottom border-secondary">
+                            
+                        </div>
+                        <div class="d-flex align-items-center flex-nowrap">
+                            <div class="bg-secondary rounded">
+                                <img src="img/team-2.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;"
+                                    alt="">
+                            </div>
+                            <div class="ms-4 d-block">
+                                <h4 class="text-dark">JOHN BANANBO
+                                </h4>
+                                <p class="m-0 pb-3">Director of Research,<br> Technology and Innovation</p>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item img-border-radius bg-light rounded p-4">
+                    <div class="position-relative">
+                        <i class=" text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
+                        <div class="mb-4 pb-4 border-bottom border-secondary">
+                            <!-- <p class="mb-0">Lorem Ipsum is simply dummy text of the printing Ipsum has been the
+                                industry's standard dummy text ever since the 1500s,
+                            </p> -->
+                        </div>
+                        <div class="d-flex align-items-center flex-nowrap">
+                            <div class="bg-secondary rounded">
+                                <img src="img/team-1.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;"
+                                    alt="">
+                            </div>
+                            <div class="ms-4 d-block">
+                                <h4 class="text-dark">AZUNGAH HARUNA RAYART</h4>
+                                <p class="m-0 pb-3">Executive Director <br> Finance, Production and Business</p>
+                                <!-- <div class="d-flex pe-5">
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item img-border-radius bg-light rounded p-4">
+                    <div class="position-relative">
+                        <i class=" text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
+                        <div class="mb-4 pb-4 border-bottom border-secondary">
+                            <!-- <p class="mb-0">Lorem Ipsum is simply dummy text of the printing Ipsum has been the
+                                industry's standard dummy text ever since the 1500s,
+                            </p> -->
+                        </div>
+                        <div class="d-flex align-items-center flex-nowrap">
+                            <div class="bg-secondary rounded">
+                                <img src="img/avatar-1.jpg" class="img-fluid rounded"
+                                    style="width: 100px; height: 100px;" alt="">
+                            </div>
+                            <div class="ms-4 d-block">
+                                <h4 class="text-dark">DORIS KWABI
+                                </h4>
+                                <p class="m-0 pb-3">Director Of Plant Science and <br>Supply Chain</p>
+                                <!-- <div class="d-flex pe-5">
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item img-border-radius bg-light rounded p-4">
+                    <div class="position-relative">
+                        <i class=" text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
+                        <div class="mb-4 pb-4 border-bottom border-secondary">
+                            <!-- <p class="mb-0">Lorem Ipsum is simply dummy text of the printing Ipsum has been the
+                                industry's standard dummy text ever since the 1500s,
+                            </p> -->
+                        </div>
+                        <div class="d-flex align-items-center flex-nowrap">
+                            <div class="bg-secondary rounded">
+                                <img src="img/avatar-1.jpg" class="img-fluid rounded"
+                                    style="width: 100px; height: 100px;" alt="">
+                            </div>
+                            <div class="ms-4 d-block">
+                                <h4 class="text-dark">Fatimatu Saeed
+                                </h4>
+                                <p class="m-0 pb-3">Technical and<br> Communication Director</p>
+                                <!-- <div class="d-flex pe-5">
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star"></i>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+        <div class="container py-5">
+            <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
+                <div class="row g-4">
+                    <div class="col-lg-3">
+                        <a href="#">
+                            <h1 class="text-primary mb-0">Nourish Nest</h1>
+                            <p class="text-secondary mb-0">Organic products</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="position-relative mx-auto">
+                            <!-- <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number"
+                                placeholder="Your Email"> -->
+                            <a href="contact.html">
+                                <button type="submit"
+                                    class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white"
+                                    style="top: 0; right: 0;">Contact Now</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="d-flex justify-content-end pt-3">
+                            <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle"
+                                href="https://x.com/rijonabbc?s=11" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle"
+                                href="https://www.facebook.com/Rijonabiochemicals?mibextid=YMEMSu" target="_blank"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle"
+                                href="https://www.linkedin.com/company/rijona-bbc" target="_blank"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle"
+                                href="https://www.instagram.com/rijona_bbc" target="_blank"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-secondary  btn-md-square rounded-circle"
+                                href="https://youtu.be/7PeSlEAf0WQ"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright bg-dark py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <span class="text-light"><a href="index.html">Nourish
+                            Nest</a> <br>All right reserved <i class="fas fa-copyright text-light me-2"></i>2025</span>
+                </div>
+                <div class="col-md-6 my-auto text-center text-md-end text-white">
+
+                    <!-- Designed By <a class="border-bottom" href="#">Larko Motif</a> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
+            class="fa fa-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
