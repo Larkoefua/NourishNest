@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8">
+
     <title>Nourish Nest</title>
     <!-- Favicon -->
     <link rel="icon" type="" href="img/favicon_rijona.png">
@@ -31,6 +32,24 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        .toast-container {
+            z-index: 1055 !important;
+        }
+
+        #cartToast.show {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        #cartToast {
+            min-width: 200px;
+            background-color: #81C408 !important;
+            color: white !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -41,8 +60,29 @@
         <div class="spinner-grow text-primary" role="status"></div>
     </div>
     <!-- Spinner End -->
-
-  <!-- Navbar start -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="cartToast" class="toast align-items-center text-white bg-primary border-0" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body"></div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="search-toast" class="toast align-items-center text-white bg-danger border-0" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Cannot be found
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar start -->
     <div class="container-fluid fixed-top">
         <div class="container topbar bg-primary d-none d-lg-block">
             <div class="d-flex justify-content-between">
@@ -73,7 +113,7 @@
                     <div class="navbar-nav mx-auto">
                         <a href="index.html" class="nav-item nav-link ">Home</a>
                         <a href="shop.html" class="nav-item nav-link active">Shop</a>
-                        <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a>
+                        <!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0 bg-secondary rounded-0">
@@ -87,15 +127,26 @@
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="d-flex m-3 me-0">
-                        <button
+                        <!-- <button
                             class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
                             data-bs-toggle="modal" data-bs-target="#searchModal"><i
-                                class="fas fa-search text-primary"></i></button>
-                        <a href="#" class="position-relative me-4 my-auto">
+                                class="fas fa-search text-primary"></i></button> -->
+                        <button
+                            class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+                            data-bs-toggle="modal" data-bs-target="#searchModal"> <!--me-4-->
+                            <i class="fas fa-search text-primary"></i>
+                        </button>
+                        <!-- <a href="#" class="position-relative me-4 my-auto">
                             <i class="fa fa-shopping-bag fa-2x"></i>
                             <span
                                 class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
                                 style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+                        </a> -->
+                        <a href="cart.html" class="position-relative me-4 my-auto">
+                            <i class="fa fa-shopping-bag fa-2x"></i>
+                            <span id="cart-counter"
+                                class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+                                style="top: -5px; left: 15px; height: 20px; min-width: 20px;">0</span>
                         </a>
                         <a href="#" class="my-auto">
                             <i class="fas fa-user fa-2x"></i>
@@ -108,7 +159,7 @@
     <!-- Navbar End -->
 
     <!-- Modal Search Start -->
-    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content rounded-0">
                 <div class="modal-header">
@@ -124,8 +175,25 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Modal Search End -->
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content rounded-0">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="searchModalLabel">Search by keyword</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex align-items-center">
+                    <div class="input-group w-75 mx-auto d-flex">
+                        <input id="navbar-search" type="search" class="form-control p-3"
+                            placeholder="Search products...">
+                        <button id="navbar-search-btn" class="btn btn-primary p-3">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <!-- Single Page Header start -->
@@ -148,26 +216,30 @@
                 <div class="col-lg-12">
                     <div class="row g-4">
                         <div class="col-xl-3">
-                            <div class="input-group w-100 mx-auto d-flex">
+                            <!-- <div class="input-group w-100 mx-auto d-flex">
                                 <input type="search" class="form-control p-3" placeholder="keywords"
                                     aria-describedby="search-icon-1">
                                 <span id="search-icon-1" class="input-group-text p-3"><i
                                         class="fa fa-search"></i></span>
-                            </div>
+                            </div> -->
                         </div>
+
                         <div class="col-6"></div>
+
                         <div class="col-xl-3">
-                            <div class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4">
-                                <label for="fruits">Default Sorting:</label>
-                                <select id="fruits" name="fruitlist" class="border-0 form-select-sm bg-light me-3"
-                                    form="fruitform">
-                                    <option value="volvo">Nothing</option>
-                                    <option value="saab">Popularity</option>
-                                    <option value="opel">Organic</option>
-                                    <option value="audi">Fantastic</option>
+                            <div class="bg-light ps-1 py-1 rounded d-flex justify-content-between mb-4">
+                                <label for="category-filter">Filter By Category:</label>
+                                <select id="category-filter" name="category"
+                                    class="border-0 form-select-sm bg-light me-3">
+                                    <option value="">All</option>
+                                    <option value="lotion">Lotion</option>
+                                    <option value="cream">Cream</option>
+                                    <option value="soap">Neem Soap</option>
+                                    <option value="oil">Neem Oil</option>
                                 </select>
                             </div>
                         </div>
+
                     </div>
                     <div class="row g-4">
                         <div class="col-lg-3">
@@ -178,34 +250,32 @@
                                         <ul class="list-unstyled fruite-categorie">
                                             <li>
                                                 <div class="d-flex justify-content-between fruite-name">
-                                                    <a href="#"><i class=" me-2"></i>Lotion</a>
+                                                    <a href="#" class="category-link" data-category="lotion"><i
+                                                            class="fas fa-leaf me-2"></i>Lotion</a>
                                                     <!-- <span>(3)</span> -->
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="d-flex justify-content-between fruite-name">
-                                                    <a href="#"><i class=" me-2"></i>Cream</a>
+                                                    <a href="#" class="category-link" data-category="cream"><i
+                                                            class="fas fa-leaf me-2"></i>Cream</a>
                                                     <!-- <span>(5)</span> -->
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="d-flex justify-content-between fruite-name">
-                                                    <a href="#"><i class=" me-2"></i>Neem Soap</a>
+                                                    <a href="#" class="category-link" data-category="soap"><i
+                                                            class="fas fa-leaf me-2"></i>Neem Soap</a>
                                                     <!-- <span>(2)</span> -->
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="d-flex justify-content-between fruite-name">
-                                                    <a href="#"><i class=" me-2"></i>Neem Oil</a>
+                                                    <a href="#" class="category-link" data-category="oil"><i
+                                                            class="fas fa-leaf me-2"></i>Neem Oil</a>
                                                     <!-- <span>(8)</span> -->
                                                 </div>
                                             </li>
-                                            <!-- <li>
-                                                <div class="d-flex justify-content-between fruite-name">
-                                                    <a href="#"><i class="fas fa-apple-alt me-2"></i>Pumpkin</a>
-                                                    <span>(5)</span>
-                                                </div>
-                                            </li> -->
                                         </ul>
                                     </div>
                                 </div>
@@ -293,7 +363,7 @@
                                             <img src="img/product3.jpg" class="img-fluid rounded" alt="">
                                         </div>
                                         <div>
-                                            <h6 class="mb-2">Nemm Soap</h6>
+                                            <h6 class="mb-2">Neem Soap</h6>
                                             <div class="d-flex mb-2">
                                                 <i class="fa fa-star text-secondary"></i>
                                                 <i class="fa fa-star text-secondary"></i>
@@ -318,7 +388,8 @@
                                         <img src="img/General_Product.jpg" class="img-fluid w-100 rounded" alt="">
                                         <div class="position-absolute"
                                             style="top: 50%; right: 10px; transform: translateY(-50%);">
-                                            <h3 class="text-secondary fw-bold">Protective <br> Organic <br> Products</h3>
+                                            <h3 class="text-secondary fw-bold">Protective <br> Organic <br> Products
+                                            </h3>
                                         </div>
                                     </div>
                                 </div>
@@ -331,17 +402,26 @@
                                         <div class="fruite-img">
                                             <img src="img/product1.jpg" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
-                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute category"
                                             style="top: 10px; left: 10px;">Lotion</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <h4>Pure Glow</h4>
                                             <p>NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
                                             <div class="d-flex justify-content-between flex-lg-wrap">
                                                 <p class="text-dark fs-5 fw-bold mb-0">₵50.99 / 400ML</p>
-                                                <a href="cart.html"
+                                                <!-- <a href="cart.html"
                                                     class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                         class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-                                                    cart</a>
+                                                    cart</a> -->
+                                                <!-- <a href="cart.html"
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"><i
+                                                        class="fa fa-shopping-bag me-2 text-primary"></i> Add to
+                                                    cart</a> -->
+                                                <button
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
+                                                    type="button">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -351,17 +431,26 @@
                                         <div class="fruite-img">
                                             <img src="img/product2.jpg" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
-                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute category"
                                             style="top: 10px; left: 10px;">Oil</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <h4>Neem Oil</h4>
                                             <p>NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
                                             <div class="d-flex justify-content-between flex-lg-wrap">
                                                 <p class="text-dark fs-5 fw-bold mb-0">₵59.99 / 400ML</p>
-                                                <a href="cart.html"
+                                                <!-- <a href="cart.html"
                                                     class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                         class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-                                                    cart</a>
+                                                    cart</a> -->
+                                                <!-- <a href="cart.html"
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"><i
+                                                        class="fa fa-shopping-bag me-2 text-primary"></i> Add to
+                                                    cart</a> -->
+                                                <button
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
+                                                    type="button">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -371,17 +460,26 @@
                                         <div class="fruite-img">
                                             <img src="img/product3.jpg" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
-                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute category"
                                             style="top: 10px; left: 10px;">Soap</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <h4>Neem Soap</h4>
                                             <p>NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
                                             <div class="d-flex justify-content-between flex-lg-wrap">
                                                 <p class="text-dark fs-5 fw-bold mb-0">₵36.99 / 400ML</p>
-                                                <a href="cart.html"
+                                                <!-- <a href="cart.html"
                                                     class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                         class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-                                                    cart</a>
+                                                    cart</a> -->
+                                                <!-- <a href="cart.html"
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"><i
+                                                        class="fa fa-shopping-bag me-2 text-primary"></i> Add to
+                                                    cart</a> -->
+                                                <button
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
+                                                    type="button">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -391,17 +489,26 @@
                                         <div class="fruite-img">
                                             <img src="img/product4.jpg" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
-                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute category"
                                             style="top: 10px; left: 10px;">Cream</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <h4>Neem Cream</h4>
                                             <p>NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
                                             <div class="d-flex justify-content-between flex-lg-wrap">
                                                 <p class="text-dark fs-5 fw-bold mb-0">₵30.99 / 400ML</p>
-                                                <a href="cart.html"
+                                                <!-- <a href="cart.html"
                                                     class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                         class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-                                                    cart</a>
+                                                    cart</a> -->
+                                                <!-- <a href="cart.html"
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"><i
+                                                        class="fa fa-shopping-bag me-2 text-primary"></i> Add to
+                                                    cart</a> -->
+                                                <button
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
+                                                    type="button">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -411,17 +518,26 @@
                                         <div class="fruite-img">
                                             <img src="img/product5.jpg" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
-                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute category"
                                             style="top: 10px; left: 10px;">Lotion</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <h4>Pure Glow </h4>
                                             <p>NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
                                             <div class="d-flex justify-content-between flex-lg-wrap">
                                                 <p class="text-dark fs-5 fw-bold mb-0">₵49.99 / 400ML</p>
-                                                <a href="cart.html"
+                                                <!-- <a href="cart.html"
                                                     class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                         class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-                                                    cart</a>
+                                                    cart</a> -->
+                                                <!-- <a href="cart.html"
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"><i
+                                                        class="fa fa-shopping-bag me-2 text-primary"></i> Add to
+                                                    cart</a> -->
+                                                <button
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
+                                                    type="button">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -431,18 +547,27 @@
                                         <div class="fruite-img">
                                             <img src="img/product6.jpg" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
-                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute category"
                                             style="top: 10px; left: 10px;">Cream</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <h4>Neem Cream</h4>
                                             <p>
-NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
+                                                NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
                                             <div class="d-flex justify-content-between flex-lg-wrap">
                                                 <p class="text-dark fs-5 fw-bold mb-0">₵30.99 / 400ML</p>
-                                                <a href="cart.html"
+                                                <!-- <a href="cart.html"
                                                     class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                         class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-                                                    cart</a>
+                                                    cart</a> -->
+                                                <!-- <a href="cart.html"
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"><i
+                                                        class="fa fa-shopping-bag me-2 text-primary"></i> Add to
+                                                    cart</a> -->
+                                                <button
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
+                                                    type="button">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -452,37 +577,55 @@ NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
                                         <div class="fruite-img">
                                             <img src="img/product2.jpg" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
-                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute category"
                                             style="top: 10px; left: 10px;"> Oil</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <h4>Neem Oil</h4>
                                             <p>NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
                                             <div class="d-flex justify-content-between flex-lg-wrap">
                                                 <p class="text-dark fs-5 fw-bold mb-0">₵59.99 / 400ML</p>
-                                                <a href="cart.html"
+                                                <!-- <a href="cart.html"
                                                     class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                         class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-                                                    cart</a>
+                                                    cart</a> -->
+                                                <!-- <a href="cart.html"
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"><i
+                                                        class="fa fa-shopping-bag me-2 text-primary"></i> Add to
+                                                    cart</a> -->
+                                                <button
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
+                                                    type="button">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-6 col-xl-4">
                                     <div class="rounded position-relative fruite-item">
-                                        <div class="Lotion">
+                                        <div class="fruite-img">
                                             <img src="img/product4.jpg" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
-                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute category"
                                             style="top: 10px; left: 10px;">Lotion</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <h4>Pure Glow</h4>
                                             <p>NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
                                             <div class="d-flex justify-content-between flex-lg-wrap">
                                                 <p class="text-dark fs-5 fw-bold mb-0">₵49.99 / 400ML</p>
-                                                <a href="cart.html"
+                                                <!-- <a href="cart.html"
                                                     class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                         class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-                                                    cart</a>
+                                                    cart</a> -->
+                                                <!-- <a href="cart.html"
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"><i
+                                                        class="fa fa-shopping-bag me-2 text-primary"></i> Add to
+                                                    cart</a> -->
+                                                <button
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
+                                                    type="button">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -492,17 +635,26 @@ NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
                                         <div class="fruite-img">
                                             <img src="img/product6.jpg" class="img-fluid w-100 rounded-top" alt="">
                                         </div>
-                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute category"
                                             style="top: 10px; left: 10px;">Cream</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <h4>Neem Cream</h4>
                                             <p>NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
                                             <div class="d-flex justify-content-between flex-lg-wrap">
                                                 <p class="text-dark fs-5 fw-bold mb-0">₵30.99 / 400ML</p>
-                                                <a href="cart.html"
+                                                <!-- <a href="cart.html"
                                                     class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                         class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-                                                    cart</a>
+                                                    cart</a> -->
+                                                <!-- <a href="cart.html"
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"><i
+                                                        class="fa fa-shopping-bag me-2 text-primary"></i> Add to
+                                                    cart</a> -->
+                                                <button
+                                                    class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
+                                                    type="button">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -529,7 +681,7 @@ NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
     <!-- Shop End-->
 
 
-   <!-- Footer Start -->
+    <!-- Footer Start -->
     <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
         <div class="container py-5">
             <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
@@ -607,8 +759,9 @@ NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-    <!-- Template Javascript -->
+    <!-- Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 
 </html>
