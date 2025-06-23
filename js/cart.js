@@ -1,4 +1,11 @@
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+
+(function ($) {
+    "use strict";
+
+    // Original cart functions (keep your existing cart code here)
+    // e.g., updateCounter, addToCart, etc.
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 const DELIVERY_FEE = 10.00;
 
 function saveCart() {
@@ -194,12 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-(function ($) {
-    "use strict";
-
-    // Original cart functions (keep your existing cart code here)
-    // e.g., updateCounter, addToCart, etc.
-
     // Search and filter functions
     function initSearchAndFilter() {
         // Hero search (index.html)
@@ -354,3 +355,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 })(jQuery);
+

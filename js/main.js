@@ -147,7 +147,112 @@
         button.parent().parent().find('input').val(newVal);
     });
 
-})(jQuery);
+    
+      // Auth functions
+    function updateUserUI() {
+        const user = localStorage.getItem('user');
+        console.log('[Auth] Updating UI, user exists:', !!user);
+        if (user) {
+            $('#logoutLink').removeClass('d-none');
+            $('.dropdown-item[data-bs-target="#loginModal"]').addClass('d-none');
+            $('.dropdown-item[data-bs-target="#registerModal"]').addClass('d-none');
+        } else {
+            $('#logoutLink').addClass('d-none');
+            $('.dropdown-item[data-bs-target="#loginModal"]').removeClass('d-none');
+            $('.dropdown-item[data-bs-target="#registerModal"]').removeClass('d-none');
+        }
+    }
 
+    function showToast(message, isSuccess = true) {
+        const toastEl = $('#auth-toast');
+        if (toastEl.length) {
+            toastEl.find('.toast-body').text(message);
+            toastEl.removeClass('bg-success bg-danger').addClass(isSuccess ? 'bg-success' : 'bg-danger');
+            const toast = new bootstrap.Toast(toastEl[0], { autohide: true, delay: 3000 });
+            toast.show();
+        } else {
+            console.warn('[Auth] Toast element not found');
+        }
+    }
+
+    $(document).ready(function () {
+        console.log('[Main] main.js loaded');
+
+        // Initialize UI
+        updateUserUI();
+
+        // Register
+        $('#registerBtn').on('click', function () {
+            console.log('[Auth] Register button clicked');
+            const email = $('#registerEmail').val().trim();
+            const password = $('#registerPassword').val();
+            const confirmPassword = $('#confirmPassword').val();
+
+            if (!email || !password || !confirmPassword) {
+                console.log('[Auth] Register: Missing fields');
+                showToast('Please fill all fields', false);
+                return;
+            }
+            if (password !== confirmPassword) {
+                console.log('[Auth] Register: Passwords do not match');
+                showToast('Passwords do not match', false);
+                return;
+            }
+
+            // Save user
+            localStorage.setItem('user', JSON.stringify({ email, password }));
+            console.log('[Auth] Register: User saved', { email, password });
+            $('#registerModal').modal('hide');
+            showToast('Registration successful');
+            updateUserUI();
+        });
+
+        // Login
+        $('#loginBtn').on('click', function () {
+            console.log('[Auth] Login button clicked');
+            const email = $('#loginEmail').val().trim();
+            const password = $('#loginPassword').val();
+
+            if (!email || !password) {
+                console.log('[Auth] Login: Missing fields');
+                showToast('Please fill all fields', false);
+                return;
+            }
+
+            // Check user
+            const user = localStorage.getItem('user');
+            if (user) {
+                const parsedUser = JSON.parse(user);
+                console.log('[Auth] Login: Checking user', { email, storedEmail: parsedUser.email });
+                if (parsedUser.email === email && parsedUser.password === password) {
+                    $('#loginModal').modal('hide');
+                    showToast('Login successful');
+                    updateUserUI();
+                } else {
+                    console.log('[Auth] Login: Invalid credentials');
+                    showToast('Invalid email or password', false);
+                }
+            } else {
+                console.log('[Auth] Login: No user found');
+                showToast('User not found', false);
+            }
+        });
+
+        // Logout
+        $('#logoutLink').on('click', function (e) {
+            e.preventDefault();
+            console.log('[Auth] Logout clicked');
+            localStorage.removeItem('user');
+            showToast('Logged out successfully');
+            updateUserUI();
+        });
+
+        // Fix ARIA warning by clearing focus on modal hide
+        $('#registerModal, #loginModal').on('hidden.bs.modal', function () {
+            console.log('[Auth] Modal hidden, clearing focus');
+            $(this).find('input, button').blur();
+        });
+    });
+})(jQuery);
 
 
