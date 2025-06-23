@@ -79,6 +79,7 @@
     transition: 0.5s;
     background: var(--bs-white);
     border: 0;
+   
 }
 
 .topbar {
@@ -479,7 +480,7 @@
 
 .category-link.active {
     font-weight: bold;
-    color: #28a745; /* Green or your brand color */
+    color: #28a745; /* Green*/
 }
 .fruite-categorie li {
     cursor: pointer;

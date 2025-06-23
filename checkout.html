@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    
+
     <title>Nourish Nest</title>
     <!-- Favicon -->
     <link rel="icon" type="" href="img/favicon_rijona.png">
@@ -32,8 +32,8 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-     <style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
         .toast-container {
             z-index: 1055 !important;
         }
@@ -60,7 +60,7 @@
         <div class="spinner-grow text-primary" role="status"></div>
     </div>
     <!-- Spinner End -->
-<div class="toast-container position-fixed top-0 end-0 p-3">
+    <div class="toast-container position-fixed  end-0 p-3">
         <div id="cartToast" class="toast align-items-center text-white bg-primary border-0" role="alert"
             aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
@@ -71,16 +71,18 @@
         </div>
     </div>
 
-    <div class="toast-container position-fixed top-0 end-0 p-3">
-    <div id="search-toast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body">
-                Cannot be found
+    <div class="toast-container position-fixed  end-0 p-3">
+        <div id="search-toast" class="toast align-items-center text-white bg-danger border-0" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Cannot be found
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
             </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
-</div>
     <!-- Navbar start -->
     <div class="container-fluid fixed-top">
         <div class="container topbar bg-primary d-none d-lg-block">
@@ -142,7 +144,7 @@
                                 class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
                                 style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
                         </a> -->
-                         <a href="cart.html" class="position-relative me-4 my-auto">
+                        <a href="cart.html" class="position-relative me-4 my-auto">
                             <i class="fa fa-shopping-bag fa-2x"></i>
                             <span id="cart-counter"
                                 class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
@@ -159,7 +161,7 @@
     <!-- Navbar End -->
 
 
-   <!-- Modal Search Start -->
+    <!-- Modal Search Start -->
     <!-- <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content rounded-0">
@@ -178,24 +180,25 @@
         </div>
     </div> -->
     <!-- Modal Search End -->
-     <!-- Modal Search Start -->
-<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content rounded-0">
-            <div class="modal-header">
-                <h5 class="modal-title" id="searchModalLabel">Search by keyword</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body d-flex align-items-center">
-                <div class="input-group w-75 mx-auto d-flex">
-                    <input id="navbar-search" type="search" class="form-control p-3" placeholder="Search products...">
-                    <button id="navbar-search-btn" class="btn btn-primary p-3">Search</button>
+    <!-- Modal Search Start -->
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content rounded-0">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="searchModalLabel">Search by keyword</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex align-items-center">
+                    <div class="input-group w-75 mx-auto d-flex">
+                        <input id="navbar-search" type="search" class="form-control p-3"
+                            placeholder="Search products...">
+                        <button id="navbar-search-btn" class="btn btn-primary p-3">Search</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Modal Search End -->
+    <!-- Modal Search End -->
 
 
     <!-- Single Page Header start -->
@@ -414,7 +417,7 @@
     <!-- Checkout Page End -->
 
 
-    <!-- Footer Start -->
+        <!-- Footer Start -->
     <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
         <div class="container py-5">
             <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
@@ -429,14 +432,14 @@
                         <div class="position-relative mx-auto">
                             <!-- <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number"
                                 placeholder="Your Email"> -->
-                            <a href="contact.html">
-                                <button type="submit"
+                            <a href="contact.html" >
+                                <button 
                                     class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white"
-                                    style="top: 0; right: 0;">Contact Now</button>
+                                   >Contact Now</button>
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-5"  style="padding-top: 2rem;">
                         <div class="d-flex justify-content-end pt-3">
                             <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle"
                                 href="https://x.com/rijonabbc?s=11" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -494,7 +497,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-     <script src="js/cart.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 
 </html>
