@@ -65,7 +65,7 @@
     <!-- Spinner End -->
 
     <!-- toast start -->
-      <!-- feedback Toast -->
+    <!-- feedback Toast -->
     <div class="toast-container position-fixed end-0 p-3">
         <div id="cartToast" class="toast align-items-center text-white bg-primary border-0" role="alert"
             aria-live="assertive" aria-atomic="true">
@@ -76,7 +76,7 @@
             </div>
         </div>
     </div>
-     <!-- Not found Toast -->
+    <!-- Not found Toast -->
     <div class="toast-container position-fixed  end-0 p-3">
         <div id="search-toast" class="toast align-items-center text-white bg-danger border-0" role="alert"
             aria-live="assertive" aria-atomic="true">
@@ -91,20 +91,22 @@
     </div>
 
     <!-- Success Toast -->
-<div class="toast-container position-fixed  end-0 p-3">
-    <div id="auth-toast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body"></div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    <div class="toast-container position-fixed  end-0 p-3">
+        <div id="auth-toast" class="toast align-items-center text-white bg-success border-0" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body"></div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
         </div>
     </div>
-</div>
     <!-- toast end -->
 
     <!-- Navbar start -->
     <div class="container-fluid fixed-top">
-        <div class="container topbar  d-none d-lg-block">
-            <!-- <div class="d-flex justify-content-between">
+        <!-- <div class="container topbar  d-none d-lg-block">
+            <div class="d-flex justify-content-between">
                 <div class="top-info ps-2">
                     <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a
                             href="https://www.google.com/maps/place/Tamale,+Vittin-Target,+Northern+Region,+Ghana"
@@ -117,8 +119,8 @@
                     <small> <i class="bi bi-phone-vibrate text-secondary me-2"></i>
                         <a href="tel:+233249897621" class="text-white">+233249897621</a></small>
                 </div>
-            </div> -->
-        </div>
+            </div>
+        </div> -->
         <div class="container px-0">
             <nav class="navbar navbar-light bg-white navbar-expand-xl">
                 <a href="index.html" class="navbar-brand">
@@ -134,7 +136,7 @@
                         <a href="index.html" class="nav-item nav-link active">Home</a>
                         <a href="shop.html" class="nav-item nav-link">Shop</a>
                         <!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
-                         <a href="cart.html" class="nav-item nav-link">Cart</a>
+                        <a href="cart.html" class="nav-item nav-link">Cart</a>
                         <!-- <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0 bg-secondary rounded-0">
@@ -174,7 +176,7 @@
                                 <li><a class="dropdown-item text-white" href="#" data-bs-toggle="modal"
                                         data-bs-target="#registerModal">Register</a></li>
                                 <li><a class="dropdown-item text-white" href="#" data-bs-toggle="modal"
-                                        data-bs-target="#loginModal">Login</a></li>                                
+                                        data-bs-target="#loginModal">Login</a></li>
                                 <li><a class="dropdown-item text-white d-none" href="#" id="logoutLink">Logout</a></li>
                             </ul>
                         </div>
@@ -205,59 +207,65 @@
     </div>
     <!-- Modal Search End -->
 
-<!-- Register Modal -->
-<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content rounded-0">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="registerModalLabel">Register</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="auth-form">
-                    <div class="mb-3">
-                        <label for="registerEmail" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="registerEmail" placeholder="Enter email" required>
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content rounded-0">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="registerModalLabel">Register</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="auth-form">
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="registerEmail" placeholder="Enter email"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="registerPassword"
+                                placeholder="Enter password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword"
+                                placeholder="Confirm password" required>
+                        </div>
+                        <button type="button" class="btn btn-primary w-100" id="registerBtn">Register</button>
                     </div>
-                    <div class="mb-3">
-                        <label for="registerPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="registerPassword" placeholder="Enter password" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" required>
-                    </div>
-                    <button type="button" class="btn btn-primary w-100" id="registerBtn">Register</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
- <!-- Login Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content rounded-0">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="loginModalLabel">Login</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="auth-form">
-                    <div class="mb-3">
-                        <label for="loginEmail" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="loginEmail" placeholder="Enter email" required>
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content rounded-0">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="auth-form">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="loginEmail" placeholder="Enter email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Enter password"
+                                required>
+                        </div>
+                        <button type="button" class="btn btn-primary w-100" id="loginBtn">Login</button>
                     </div>
-                    <div class="mb-3">
-                        <label for="loginPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="loginPassword" placeholder="Enter password" required>
-                    </div>
-                    <button type="button" class="btn btn-primary w-100" id="loginBtn">Login</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
@@ -268,7 +276,7 @@
                 <div class="col-md-12 col-lg-7">
                     <h4 class="mb-3 text-secondary">100% Organic Products</h4>
                     <h1 class="mb-5 display-3 text-primary">Pure Glow, Powerful Mosquito Shield.</h1>
-<!-- 
+                    <!-- 
                     <div class="position-relative mx-auto">
 
                         <form id="hero-search-form" class="d-flex">
@@ -317,7 +325,7 @@
         <div class="container py-5">
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3">
-                    <div class="featurs-item text-center rounded bg-light p-4">
+                    <div class="featurs-item text-center rounded bg-light p-4  ">
                         <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
                             <i class="fas fa-car-side fa-3x text-white"></i>
                         </div>
@@ -403,13 +411,13 @@
                                     </a>
                                 </li> -->
 
-                                <button
-                            class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-                            data-bs-toggle="modal" data-bs-target="#searchModal">
-                            <i class="fas fa-search text-primary"></i>
-                        </button>
+                            <!-- <button
+                                class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+                                data-bs-toggle="modal" data-bs-target="#searchModal">
+                                <i class="fas fa-search text-primary"></i>
+                            </button> -->
                         </ul>
-                        
+
                     </div>
                 </div>
                 <div class="tab-content">
@@ -426,9 +434,9 @@
                                                 style="top: 10px; left: 10px;">Lotion</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4>Pure Glow</h4>
-                                                <p>NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">₵50.99 / 400ML</p>
+                                                <p>Neem Powered Lotion With Mosquito Protection For Your Skin</p>
+                                                <div class="d-flex justify-content-between align-items-center product-row-nowrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">₵50.99</p>
                                                     <!-- <a href="cart.html"
                                                         class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                             class="fa fa-shopping-bag me-2 text-primary"></i> Add to
@@ -436,7 +444,7 @@
                                                     <button
                                                         class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
                                                         type="button">
-                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i>Buy Now 
                                                     </button>
                                                 </div>
                                             </div>
@@ -451,9 +459,9 @@
                                                 style="top: 10px; left: 10px;">Oil</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4>Neem Oil</h4>
-                                                <p>NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">₵39.99 / 400ML</p>
+                                                <p>Neem Powered Lotion With Mosquito Protection For Your Skin</p>
+                                                <div class="d-flex justify-content-between align-items-center product-row-nowrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">₵39.99</p>
                                                     <!-- <a href="cart.html"
                                                         class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                             class="fa fa-shopping-bag me-2 text-primary"></i> Add to
@@ -461,7 +469,7 @@
                                                     <button
                                                         class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
                                                         type="button">
-                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i>Buy Now
                                                     </button>
                                                 </div>
                                             </div>
@@ -476,9 +484,9 @@
                                                 style="top: 10px; left: 10px;">Lotion</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4>Pure Glow</h4>
-                                                <p>NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">₵49.99 / 400ML</p>
+                                                <p>Neem Powered Lotion With Mosquito Protection For Your Skin</p>
+                                                <div class="d-flex justify-content-between align-items-center product-row-nowrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">₵49.99</p>
                                                     <!-- <a href="cart.html"
                                                         class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                             class="fa fa-shopping-bag me-2 text-primary"></i> Add to
@@ -486,7 +494,7 @@
                                                     <button
                                                         class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
                                                         type="button">
-                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i>Buy Now
                                                     </button>
                                                 </div>
                                             </div>
@@ -501,9 +509,9 @@
                                                 style="top: 10px; left: 10px;">Cream</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4>Neem Cream</h4>
-                                                <p>NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN </p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">₵30.99 / 400ML</p>
+                                                <p>Neem Powered Lotion With Mosquito Protection For Your Skin</p>
+                                                <div class="d-flex justify-content-between align-items-center product-row-nowrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">₵30.99</p>
                                                     <!-- <a href="cart.html"
                                                         class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                             class="fa fa-shopping-bag me-2 text-primary"></i> Add to
@@ -511,7 +519,7 @@
                                                     <button
                                                         class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
                                                         type="button">
-                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i>Buy Now
                                                     </button>
                                                 </div>
                                             </div>
@@ -526,17 +534,23 @@
                                                 style="top: 10px; left: 10px;">Oil</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4>Neem Oil</h4>
-                                                <p>NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p>Neem Powered Lotion With Mosquito Protection For Your Skin</p>
+                                                <!-- <div class="d-flex justify-content-between flex-lg-wrap">
                                                     <p class="text-dark fs-5 fw-bold mb-0">₵59.99 / 400ML</p>
-                                                    <!-- <a href="cart.html"
-                                                        class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                                            class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-                                                        cart</a> -->
+                                                    
                                                     <button
                                                         class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
                                                         type="button">
                                                         <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                    </button>
+                                                </div> -->
+                                                <div class="d-flex justify-content-between align-items-center align-items-center product-row-nowrap"
+                                                    >
+                                                    <p class="text-dark fs-5 fw-bold mb-0">₵59.99</p>
+                                                    <button
+                                                        class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
+                                                        type="button">
+                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i>Buy Now
                                                     </button>
                                                 </div>
                                             </div>
@@ -545,15 +559,15 @@
                                     <div class="col-md-6 col-lg-4 col-xl-3">
                                         <div class="rounded position-relative fruite-item">
                                             <div class="fruite-img">
-                                                <img src="img/product3.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                                <img src="img/product6.jpg" class="img-fluid w-100 rounded-top" alt="">
                                             </div>
                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
                                                 style="top: 10px; left: 10px;">Soap</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4>Neem Soap</h4>
-                                                <p>NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">₵36.99 / 400ML</p>
+                                                <p>Neem Powered Lotion With Mosquito Protection For Your Skin</p>
+                                                <div class="d-flex justify-content-between align-items-center product-row-nowrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">₵36.99</p>
                                                     <!-- <a href="cart.html"
                                                         class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                             class="fa fa-shopping-bag me-2 text-primary"></i> Add to
@@ -561,7 +575,7 @@
                                                     <button
                                                         class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
                                                         type="button">
-                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i>Buy Now
                                                     </button>
                                                 </div>
                                             </div>
@@ -617,8 +631,8 @@
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4>Pure Glow</h4>
                                                 <p>NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">₵49.99 / 400ML</p>
+                                                <div class="d-flex justify-content-between align-items-center product-row-nowrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">₵49.99</p>
                                                     <!-- <a href="#"
                                                         class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                             class="fa fa-shopping-bag me-2 text-primary"></i> Add to
@@ -626,7 +640,7 @@
                                                     <button
                                                         class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
                                                         type="button">
-                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i>Buy Now
                                                     </button>
                                                 </div>
                                             </div>
@@ -642,8 +656,8 @@
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4>Pure Glow</h4>
                                                 <p>NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">₵59.99 / 400ML</p>
+                                                <div class="d-flex justify-content-between align-items-center product-row-nowrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">₵59.99</p>
                                                     <!-- <a href="#"
                                                         class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                             class="fa fa-shopping-bag me-2 text-primary"></i> Add to
@@ -651,7 +665,7 @@
                                                     <button
                                                         class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
                                                         type="button">
-                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i>Buy Now
                                                     </button>
                                                 </div>
                                             </div>
@@ -675,8 +689,8 @@
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4>Neem Cream</h4>
                                                 <p>NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">₵29.99 / 400ML</p>
+                                                <div class="d-flex justify-content-between align-items-center product-row-nowrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">₵29.99</p>
                                                     <!-- <a href="#"
                                                         class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                             class="fa fa-shopping-bag me-2 text-primary"></i> Add to
@@ -684,7 +698,7 @@
                                                     <button
                                                         class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
                                                         type="button">
-                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i>Buy Now
                                                     </button>
                                                 </div>
                                             </div>
@@ -700,8 +714,8 @@
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4>Neem Cream</h4>
                                                 <p>NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">₵29.99 / 400ML</p>
+                                                <div class="d-flex justify-content-between align-items-center product-row-nowrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">₵29.99</p>
                                                     <!-- <a href="#"
                                                         class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                             class="fa fa-shopping-bag me-2 text-primary"></i> Add to
@@ -709,7 +723,7 @@
                                                     <button
                                                         class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
                                                         type="button">
-                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i>Buy Now
                                                     </button>
                                                 </div>
                                             </div>
@@ -726,15 +740,15 @@
                                     <div class="col-md-6 col-lg-4 col-xl-3">
                                         <div class="rounded position-relative fruite-item">
                                             <div class="fruite-img">
-                                                <img src="img/product3.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                                <img src="img/product6.jpg" class="img-fluid w-100 rounded-top" alt="">
                                             </div>
                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
                                                 style="top: 10px; left: 10px;">Soap</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4>Neem Soap</h4>
                                                 <p>NEEM POWERED LOTION WITH MOSQUITO PROTECTION FOR YOUR SKIN</p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">₵30.99 / 400ML</p>
+                                                <div class="d-flex justify-content-between align-items-center product-row-nowrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">₵30.99</p>
                                                     <!-- <a href="#"
                                                         class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                             class="fa fa-shopping-bag me-2 text-primary"></i> Add to
@@ -742,7 +756,7 @@
                                                     <button
                                                         class="btn border border-secondary rounded-pill px-3 text-primary add-to-cart"
                                                         type="button">
-                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i>Buy Now
                                                     </button>
                                                 </div>
                                             </div>
@@ -842,7 +856,7 @@
                             drop tells a story of sustainability, well-being, and a commitment to a healthier tomorrow.
                         </p>
                         <a href="shop.html"
-                            class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5">BUY NOW</a>
+                            class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5">Shop Now</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -1075,6 +1089,7 @@
     <!-- Javascript -->
     <script src="js/main.js"></script>
     <script src="js/cart.js"></script>
+
 </body>
 
 </html>

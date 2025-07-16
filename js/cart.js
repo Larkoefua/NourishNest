@@ -267,7 +267,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 const category = $(this).data('category').toLowerCase();
                 console.log('[Filter] Selected category (sidebar):', category);
-                filterProducts(category);
+                
+                if (!category) {
+                    // "All Products" clicked - clear search and show all
+                    clearSearchAndShowAll();
+                } else {
+                    filterProducts(category);
+                }
+                
                 categoryFilter.val(category);
                 $('.category-link').removeClass('active');
                 $(this).addClass('active');
@@ -288,13 +295,51 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('[Search] Found items:', items.length);
             items.each(function (index) {
                 const nameElement = $(this).find('h4, h5, .product-name, .item-name');
+                const categoryElement = $(this).find('.category');
+                const descriptionElement = $(this).find('p');
+                
                 const productName = nameElement.length ? nameElement.text().trim().toLowerCase() : '';
-                console.log('[Search] Item', index, 'Name:', productName);
-                if (query && productName.includes(query)) {
-                    $(this).show();
+                const productCategory = categoryElement.length ? categoryElement.text().trim().toLowerCase() : '';
+                const productDescription = descriptionElement.length ? descriptionElement.text().trim().toLowerCase() : '';
+                
+                console.log('[Search] Item', index, 'Name:', productName, 'Category:', productCategory, 'Description:', productDescription);
+                
+                // Prioritize category match over description match
+                let matchesQuery = false;
+                let hasCategoryMatch = false;
+                
+                if (query) {
+                    // First check if category matches exactly (case-insensitive)
+                    if (productCategory === query || productCategory.toLowerCase() === query.toLowerCase()) {
+                        matchesQuery = true;
+                        hasCategoryMatch = true;
+                        console.log('[Search] Category exact match found');
+                    }
+                }
+                
+                // Only check name and description if no category match was found
+                if (!hasCategoryMatch && query) {
+                    // Then check if name contains the query
+                    if (productName.includes(query)) {
+                        matchesQuery = true;
+                        console.log('[Search] Name contains query');
+                    }
+                    // Only check description if no category or name match
+                    else if (productDescription.includes(query)) {
+                        matchesQuery = true;
+                        console.log('[Search] Description contains query');
+                    }
+                } else if (!query) {
+                    matchesQuery = true; // No query means show all
+                }
+                
+                if (matchesQuery) {
+                    $(this).closest('.col-md-6, .col-lg-6, .col-xl-4').show();
                     found = true;
+                    console.log('[Search] Item', index, 'SHOWN - matches query');
                 } else {
-                    $(this).hide();
+                    $(this).closest('.col-md-6, .col-lg-6, .col-xl-4').hide();
+                    console.log('[Search] Item', index, 'HIDDEN - no match');
                 }
             });
             if (query && !found) {
@@ -303,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 toast.show();
             }
             if (!query) {
-                items.show();
+                items.closest('.col-md-6, .col-lg-6, .col-xl-4').show();
             }
         } else {
             // Redirect to shop.html
@@ -325,16 +370,54 @@ document.addEventListener('DOMContentLoaded', () => {
             let found = false;
             items.each(function (index) {
                 const nameElement = $(this).find('h4, h5, .product-name, .item-name');
+                const categoryElement = $(this).find('.category');
+                const descriptionElement = $(this).find('p');
+                
                 const productName = nameElement.length ? nameElement.text().trim().toLowerCase() : '';
-                const productCategory = $(this).find('.category').text().toLowerCase() || '';
-                console.log('[Filter] Item', index, 'Name:', productName, 'Category:', productCategory);
-                const matchesQuery = !query || productName.includes(query);
+                const productCategory = categoryElement.length ? categoryElement.text().trim().toLowerCase() : '';
+                const productDescription = descriptionElement.length ? descriptionElement.text().trim().toLowerCase() : '';
+                
+                console.log('[Filter] Item', index, 'Name:', productName, 'Category:', productCategory, 'Description:', productDescription);
+                
+                // Prioritize category match over description match
+                let matchesQuery = false;
+                let hasCategoryMatch = false;
+                
+                if (query) {
+                    // First check if category matches exactly (case-insensitive)
+                    if (productCategory === query || productCategory.toLowerCase() === query.toLowerCase()) {
+                        matchesQuery = true;
+                        hasCategoryMatch = true;
+                        console.log('[Filter] Category exact match found');
+                    }
+                }
+                
+                // Only check name and description if no category match was found
+                if (!hasCategoryMatch && query) {
+                    // Then check if name contains the query
+                    if (productName.includes(query)) {
+                        matchesQuery = true;
+                        console.log('[Filter] Name contains query');
+                    }
+                    // Only check description if no category or name match
+                    else if (productDescription.includes(query)) {
+                        matchesQuery = true;
+                        console.log('[Filter] Description contains query');
+                    }
+                } else if (!query) {
+                    matchesQuery = true; // No query means show all
+                }
+                
                 const matchesCategory = !category || productCategory === category;
+                console.log('[Filter] Final matches - Query:', matchesQuery, 'Category:', matchesCategory);
+                
                 if (matchesQuery && matchesCategory) {
-                    $(this).show();
+                    $(this).closest('.col-md-6, .col-lg-6, .col-xl-4').show();
                     found = true;
+                    console.log('[Filter] Item', index, 'SHOWN - matches criteria');
                 } else {
-                    $(this).hide();
+                    $(this).closest('.col-md-6, .col-lg-6, .col-xl-4').hide();
+                    console.log('[Filter] Item', index, 'HIDDEN - no match');
                 }
             });
             if ((query || category) && !found) {
@@ -344,6 +427,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             $('#navbar-search').val(query || '');
         }
+    }
+
+    function clearSearchAndShowAll() {
+        console.log('[Filter] Clearing search and showing all products');
+        // Clear the search query from URL
+        const url = new URL(window.location);
+        url.searchParams.delete('query');
+        window.history.replaceState({}, '', url);
+        
+        // Clear search input
+        $('#navbar-search').val('');
+        
+        // Show all products
+        $('.fruite-item').closest('.col-md-6, .col-lg-6, .col-xl-4').show();
+        
+        // Remove active class from all category links
+        $('.category-link').removeClass('active');
+        // Add active class to "All Products" link
+        $('.category-link[data-category=""]').addClass('active');
     }
 
     $(document).ready(function () {

@@ -319,6 +319,34 @@
 .fruite .fruite-item .fruite-img img:hover {
     transform: scale(1.3);
 }
+
+.product-row-nowrap {
+  /* white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  gap: 0.5rem;
+}
+.product-row-nowrap p,
+.product-row-nowrap button {
+  /* white-space: nowrap; */
+  
+  overflow: visible;
+  text-overflow: unset;
+  font-size: 1rem; /* or your preferred size */
+}
+
+  @media (max-width: 576px) {
+    .product-row-nowrap p,
+    .product-row-nowrap button {
+      font-size: 1rem;
+      padding: 0.25rem 0.5rem;
+    }
+  }
 /*** Fruits End ***/
 
 

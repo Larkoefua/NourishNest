@@ -13,21 +13,21 @@
 
 
     // Fixed Navbar
-    $(window).scroll(function () {
-        if ($(window).width() < 992) {
-            if ($(this).scrollTop() > 55) {
-                $('.fixed-top').addClass('shadow');
-            } else {
-                $('.fixed-top').removeClass('shadow');
-            }
-        } else {
-            if ($(this).scrollTop() > 55) {
-                $('.fixed-top').addClass('shadow').css('top', -55);
-            } else {
-                $('.fixed-top').removeClass('shadow').css('top', 0);
-            }
-        } 
-    });
+    // $(window).scroll(function () {
+    //     if ($(window).width() < 992) {
+    //         if ($(this).scrollTop() > 55) {
+    //             $('.fixed-top').addClass('shadow');
+    //         } else {
+    //             $('.fixed-top').removeClass('shadow');
+    //         }
+    //     } else {
+    //         if ($(this).scrollTop() > 55) {
+    //             $('.fixed-top').addClass('shadow').css('top', -55);
+    //         } else {
+    //             $('.fixed-top').removeClass('shadow').css('top', 0);
+    //         }
+    //     } 
+    // });
     
     
    // Back to top button
@@ -253,6 +253,26 @@
             $(this).find('input, button').blur();
         });
     });
+
+    $(document).ready(function() {
+    $('.category-link').on('click', function(e) {
+        e.preventDefault();
+        var selectedCategory = $(this).data('category');
+        if (!selectedCategory) {
+            // Show all products
+            $('.fruite-item').closest('.col-md-6, .col-lg-6, .col-xl-4').show();
+        } else {
+            $('.fruite-item').each(function() {
+                var productCategory = $(this).find('.category').text().trim().toLowerCase();
+                if (productCategory === selectedCategory.toLowerCase()) {
+                    $(this).closest('.col-md-6, .col-lg-6, .col-xl-4').show();
+                } else {
+                    $(this).closest('.col-md-6, .col-lg-6, .col-xl-4').hide();
+                }
+            });
+        }
+    });
+});
 })(jQuery);
 
 
