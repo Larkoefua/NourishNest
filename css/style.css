@@ -295,7 +295,7 @@
 }
 
 .fruite .fruite-categorie .fruite-name a:hover {
-    color: var(--bs-secondary);
+    color: red;
 }
 
 .fruite .fruite-item {
@@ -508,7 +508,7 @@
 
 .category-link.active {
     font-weight: bold;
-    color: #28a745; /* Green*/
+    color: #a72828; /* Green*/
 }
 .fruite-categorie li {
     cursor: pointer;
